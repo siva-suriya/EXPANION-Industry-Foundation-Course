@@ -1,0 +1,29 @@
+problem://////////////////
+
+Given an integer array find the second largest element (where array has only distinct elements)
+
+Input: [2, 10, 11, 20, -5, 40, 60, 90, 1, 100]
+Output: 90
+
+
+code://///////////////////////////
+
+#include "common.h"
+#include <limits.h>
+int func(int * input,int inputlen){
+	// WRITE YOUR CODE HERE
+	int i,j,temp;
+	for(i=0;i<inputlen;i++)
+	{
+	    for(j=i+1;j<inputlen;j++)
+	    {
+	        if(input[i]>input[j])
+	        {
+	            temp=input[i];
+	            input[i]=input[j];
+	            input[j]=temp;
+	        }
+	    }
+	}
+	return input[inputlen-2];
+}
