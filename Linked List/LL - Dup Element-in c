@@ -1,0 +1,53 @@
+problem://////////////////////
+
+In a given LinkedList (where each node has a character), 
+there is one character which appears twice. 
+Find a function to find the character and return it. 
+
+Input: h->e->l->l->o->NULL
+Output : 'l'
+Input: a->s->d->f->g->h->j->a->NULL
+Output: 'a'
+
+
+//here is the class definition of SchNode
+public class SchNode {
+	public char ch; 
+	public SchNode nextNode; 
+	public SchNode(char ch){
+		this.ch = ch; 
+	}	
+}
+
+//Here is the Definition of SchNode for C Language
+struct SchNode {
+	char ch;
+	struct SchNode * nextNode;
+	};
+  
+  code://///////////////////////////
+  
+  
+  #include "common.h"
+#include <string.h>
+char func(struct SchNode * head){
+	char ch  = '\0';
+	// WRITE YOUR CODE HERE
+	if(head==NULL)
+	return NULL;
+	struct SchNode* ptr=head;
+	while(ptr!='\0')
+	{
+	    struct SchNode* next=ptr->nextNode;
+	    while(next!='\0')
+	    {
+	        if(ptr->ch==next->ch)
+	        {
+	            return ptr->ch;
+	        }
+	        next=next->nextNode;
+	    }
+	    ptr=ptr->nextNode;
+	}
+	return ch;
+}
