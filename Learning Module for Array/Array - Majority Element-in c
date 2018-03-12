@@ -1,0 +1,46 @@
+problem:///////////////////
+
+Find the character which appeared the maximum time. If you have multiple character as result return the first character in that list.  
+
+Input: "hello world"
+Output : 'l'
+Input: "ye haha"
+Output: 'h'
+
+
+code://///////////////////
+
+
+#include "common.h"
+#include <string.h>
+
+char func(char * str){
+	char ch = '\0';
+	// WRITE YOUR CODE HERE
+	if(!str)
+	return ch;
+	int i,j;
+	//return ch;
+	int n,max=0,count;
+	n=strlen(str);
+	for(i=0;i<n;i++)
+	{
+	    count=0;
+	    for(j=i;j<n;j++)
+	    {
+	        if(str[i]==str[j])
+	        {
+	            count++;
+	        }
+	        
+	    }
+	        if(max<count)
+	        {
+	            ch=str[i];
+	            max=count;
+	            
+	        }
+	    }
+	    return ch;
+	}
+
