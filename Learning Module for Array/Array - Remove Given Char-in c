@@ -1,0 +1,48 @@
+problem://///////////////////////
+
+
+Given a string (array of characters) remove the given character 
+
+Input: 
+Input String: "Hello"
+CharacterToRemove: 'l'
+Output: "Heo"
+
+
+code:///////////////////
+
+#include "common.h"
+#include <string.h>
+
+char * func(char * str, char ch){
+	// WRITE YOUR CODE HERE
+	if(str=='\0')
+
+	return NULL;
+    else{
+        int i,n,k;
+        n=strlen(str);
+        for(i=0;i<n;)
+        {
+            if(str[i]==ch)
+            {
+                for(k=i;k<n;k++)
+                {
+                    str[k]=str[k+1];
+                }
+                n--;
+                
+            }
+            else
+                i++;
+        }
+        if(n==0){
+            return NULL;
+            
+        }
+        else 
+            return str;
+    }
+    
+    
+}
