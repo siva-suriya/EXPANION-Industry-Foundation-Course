@@ -1,0 +1,53 @@
+problem://///////////////////////////
+
+Find the intersection of two given string. Return the string which has character which appears in both string (same sequence order as string1). 
+Input: String1: "Hello"  String2: "world"
+Output: "lo"
+Input: String 1: "hi" String2: "bye"
+Output: null
+
+
+code:////////////////////////////////
+
+
+#include "common.h"
+#include <string.h>
+
+char * func(char * str1, char * str2){
+    
+	// WRITE YOUR CODE HERE
+	int a,b;
+	int i,j;
+	int m=0;
+	char *l;
+	if((str1==NULL)&&(str2==NULL))
+	{
+	    return NULL;
+	}
+	else{
+	    a=strlen(str1);
+	    b=strlen(str2);
+	    l=(char*)malloc(sizeof(char));
+	    for(i=0;i<a;i++)
+	    {
+	        for(j=0;j<b;j++)
+	        {
+	            if(*(str1+i)==*(str2+j))
+	            {
+	                *(l+m)=*(str1+i);
+	                *(str2+j)='*';
+	                m++;
+	            }
+	        }
+	    }
+	}
+	if(l!='\0')
+	{
+	    return l;
+	    
+	}
+	else{
+	    return NULL;
+	}
+//	return NULL;
+}
