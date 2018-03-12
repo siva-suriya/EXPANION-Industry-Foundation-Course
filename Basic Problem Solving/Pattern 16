@@ -1,0 +1,30 @@
+#include<stdio.h>
+int main(int argc,char* argv[]){
+    int i,j,temp,n,t,l;
+    scanf("%d",&n);
+    temp=n;
+    t=n-(n-1);
+    l=n;
+    for(i=1;i<=n;i++)
+    {
+        for(j=l;j>t;j--)
+        {
+            if(temp>=n)
+            {
+                printf("%d ",n);
+                
+            }
+            else{
+                printf("%d ",temp);
+                temp++;
+            }
+        }
+        for(j=1;j==1;j++)
+        {
+            printf("%d",n);
+        }
+        printf("\n");
+        temp=temp-i;
+    }
+return 0;
+}
