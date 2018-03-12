@@ -1,0 +1,47 @@
+problem:////////////////////////
+
+Given a string (array of characters) insert a given character at the specified location 
+Input: 
+Input String: "Hello"
+Location: 3 (if the location is beyond string length, ignore)
+CharacterToInsert: 'm'
+Output: "Hemllo"
+
+
+code://///////////////////////////
+
+#include "common.h"
+#include <string.h>
+
+char * func(char * str, int index,  char ch){
+    if(str==NULL)
+    {
+        return NULL;
+        
+    }
+    else{
+        int h=strlen(str);
+        char *g;
+        int i=0;
+        g=(char *)malloc((h+1)*sizeof(char));
+        for(i=0;i<=h;i++)
+        {
+            if(i<index-1)
+            {
+                *(g+i)=*(str+i);
+                
+            }
+            if(i==index-1){
+                *(g+i)=ch;
+                *(g+(i+1))=*(str+i);
+            }
+            if(i>index-1)
+            {
+                *(g+(i+1))=*(str+i);
+            }
+        }
+    
+        return g;
+    }
+	
+}
