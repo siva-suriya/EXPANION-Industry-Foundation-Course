@@ -1,0 +1,41 @@
+problem:////////////////////////
+
+
+Find if the given number in a string, fund if it is jumper number, where the absolute difference consecutive digits is 1
+
+Input: 2345434321
+Output: true
+Input: 234534
+Output: false
+
+
+
+code://////////////////////////
+
+#include "common.h"
+#include <string.h>
+#include "ExpCUtils.h"
+#include<math.h>
+BOOL func(char * str){
+
+	int a,i,j=0,flag=0;
+	a=strlen(str);
+	for(i=0;i<a-1;i++)
+	{
+	    j=abs(*(str+(i+1))-*(str+i));
+	    if(j==1)
+	    {
+	        j=0;
+	    }
+	    else{
+	        flag=1;
+	    }
+	}
+	if(flag==1){
+	    return false;
+	}
+	else{
+	    return true;
+	}
+	return true;
+}
