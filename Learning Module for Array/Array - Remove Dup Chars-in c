@@ -1,0 +1,44 @@
+problem:////////////////
+
+Given a string remove duplicates characters and maintain the same order
+
+Input: "Hello world hi" 
+Output String: "Helo wrdhi"
+
+code://////////////////
+
+
+#include "common.h"
+#include <string.h>
+
+char * func(char * str) {
+	// WRITE YOUR CODE HERE
+	if(str=='\0')
+//	return NULL;
+	return NULL;
+	else{
+	    int i,j,k,n;
+	    n=strlen(str);
+	    for(i=0;i<n;i++)
+	    {
+	        for(j=i+1;j<n;)
+	        {
+	            if(str[i]==str[j])
+	            {
+	                for(k=j;k<n;k++)
+	                {
+	                    str[k]=str[k+1];
+	                }
+	                n--;
+	            }
+	            else
+	            {
+	                j++;
+	            }
+	            }
+	           // return str;
+	        }
+	        return str;
+	    }
+	}
+
