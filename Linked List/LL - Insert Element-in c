@@ -1,0 +1,71 @@
+problem://////////////////////////////
+
+
+Given a LinkedList (where each node has a character) 
+insert a given character at the specified location 
+Input: 
+Input : H->e->l->l->o->NULL
+Location: 3 (if the location is beyond LinkedList length, ignore)
+CharacterToInsert: 'm'
+Output: H->e->m->l->l->o->NULL
+
+// here is the definition of SchNode
+public class SchNode {
+	public char ch; 
+	public SchNode nextNode; 
+	public SchNode(char ch){
+		this.ch = ch; 
+	}	
+}
+
+//Here is the Definition of SchNode for C Language
+struct SchNode {
+	char ch;
+	struct SchNode * nextNode;
+	};
+  
+  
+  code:///////////////////////////////
+  
+  
+  
+  #include "common.h"
+#include "ExpCUtils.h"
+struct SchNode * func(struct SchNode * head, int index,  char ch) {
+// WRITE YOUR CODE HERE
+if(head==NULL)
+   {
+       return NULL;
+   }
+   else
+   {
+      struct SchNode * prev=head;
+     struct SchNode * next=NULL;
+  struct SchNode * head1;
+     head1=(struct SchNode*)malloc(sizeof(struct SchNode));
+     head1->ch=ch;
+     head1->nextNode=NULL;
+     int i=1;
+     if(index==1)
+     {
+         head1->nextNode=head;
+         head=head1;
+     }
+     else
+     {
+     while(index!=i)
+     {
+         if(prev==NULL)
+         return head;
+         else
+         {
+        i++;
+        next=prev;
+        prev=prev->nextNode;
+         }
+     }
+       next->nextNode=head1;
+       head1->nextNode=prev;
+       return head;
+}}
+}
