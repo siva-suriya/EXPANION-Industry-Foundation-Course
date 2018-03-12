@@ -1,0 +1,42 @@
+#include<stdio.h>
+int main(int argc,char* argv[]){
+    int i,j,n,temp,t,l,m;
+    scanf("%d",&n);
+    temp=n;
+    t=n-(n-1);
+    l=t;
+    for(i=1;i<=n;i++)
+    {
+        if((i%2)!=0)
+        {
+            m=1;
+        }
+        else{
+            m=0;
+        }
+        for(j=1;j<l;j++)
+        {
+            if(m==1)
+            {
+                printf("%d ",m--);
+            }
+            else{
+                printf("%d ",m++);
+            }
+            
+        }
+        for(j=1;j==1;j++)
+        {
+            if(m=1)
+            {
+                printf("%d",m--);
+            }
+            else{
+                printf("%d",m++);
+            }
+        }
+        printf("\n");
+        l++;
+    }
+return 0;
+}
