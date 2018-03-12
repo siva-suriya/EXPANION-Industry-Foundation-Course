@@ -1,3 +1,27 @@
+Pattern 6
+Write a program to print the given pattern.
+
+Input Format:
+Input consists of a single integer.
+
+Output Format:
+Refer sample output.
+
+Sample Input:
+5
+
+Sample Output:
+5
+4 5
+3 4 5
+2 3 4 5
+1 2 3 4 5
+
+
+
+CODE://///////////////////////////////////////
+
+
 #include<stdio.h>
 int main(int argc,char* argv[]){
     int i,j,n,temp,t,l;
