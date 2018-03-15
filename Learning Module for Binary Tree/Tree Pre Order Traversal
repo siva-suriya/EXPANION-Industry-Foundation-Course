@@ -1,0 +1,73 @@
+Preorder traversal is a depth first traversal technique where the nodes are visited in the following order : (Root, Left, Right)
+
+For example: 
+
+             1
+          /      \
+        /         \
+      2           3
+     /   \         /  \
+   4    5      6   7
+
+
+Preorder traversal output:  1 2 4 5 3 6 7
+
+Given a binary tree with positive integer values, find the preorder traversal of the tree and print them with the values in the left subtree as negative integers
+
+Expected output: 1 -2 -4 5 3 -6  7
+
+The structure of Node is
+struct Node {
+	int nodeValue;
+	struct Node * lChild;
+	struct Node * rChild;
+};
+JAVA
+public class Node {
+	public int nodeValue;
+	public Node lChild;
+	public Node rChild;
+}
+
+
+code://///////////////////////////////////////
+
+import com.expanion.code.evalution.Node;
+import java.util.*;
+
+public class Answer implements QuestionInterface {
+	// @Override
+	
+	static public ArrayList<Integer> a = new ArrayList();
+	
+	public int[] func(Node root) {
+	        a.clear();
+	        preOrder(root, true);
+	        
+	        if(showArray().length > 0) {
+	            return showArray();
+	        } 
+	        return null;
+    }
+    
+    public int[] showArray() {
+        int i, n = a.size();
+        int arr[] = new int[n];
+        for(i = 0; i < n; i++) {
+            arr[i] = a.get(i);
+        }
+        return arr;
+    }
+    
+    public void preOrder(Node node, boolean bool) {
+        if(node == null) return;
+        
+        if(bool) a.add(node.nodeValue);
+        else a.add(-node.nodeValue);
+        bool = false;
+        preOrder(node.lChild, bool);
+        bool = true;
+        preOrder(node.rChild, bool);
+    }
+}
+
