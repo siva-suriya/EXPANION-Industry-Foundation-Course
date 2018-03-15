@@ -1,0 +1,78 @@
+Given a input string (inputStr1) and reference string (inputStr2) as a LinkedLink, where 
+each Node has a character,  remove all the occurrence of character of reference string 
+in the input string 
+
+Input LinkedList: H->e->l->l->o->w->o->r->l->d->h->i->NULL 
+Deletion String: l->h->e->NULL
+Output String: H->o->w->o->r->d->i->NULL
+
+
+//here is the class definition of SchNode
+public class SchNode {
+	public char ch; 
+	public SchNode nextNode; 
+	public SchNode(char ch){
+		this.ch = ch; 
+	}	
+}
+
+//Here is the Definition of SchNode for C Language
+struct SchNode {
+	char ch;
+	struct SchNode * nextNode;
+	};
+
+
+
+code:////////////////////////
+#include "common.h"
+//#include 
+#include "ExpCUtils.h"
+
+struct SchNode * func(struct SchNode * head1, struct SchNode * head2){
+     struct SchNode *temp1,*n,*x,*y;
+     x=head1;
+     y=head2;
+     
+     int f=0;
+     
+     while(x!=NULL)
+     {
+      y =head2;
+         while(y!=NULL)
+         {
+         if((x->ch)==(y->ch))
+         {
+             x->ch='#';
+         }
+            y=y->nextNode;
+     }
+     x=x->nextNode;
+     }
+     x=head1;
+          while(x!=NULL)
+         {
+         if(x->ch!='#')
+         {
+       if(f==0){
+                   temp1=(SchNode*)malloc(sizeof(SchNode));
+                   temp1->ch=x->ch;
+                   f=1;
+                   n=temp1;
+                   }
+                 
+                  else
+                  {
+                     SchNode*N=(SchNode*)malloc(sizeof(SchNode));
+                     N->ch=x->ch;
+                     n->nextNode=N;
+                     n=N;
+                  }  
+     }
+     x=x->nextNode;
+         }
+     if(f==0)
+         return NULL;
+     else
+     return temp1;
+     }
