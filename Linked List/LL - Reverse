@@ -1,0 +1,40 @@
+Given a string as  LinkedList (where each node has a character), reverse the LinkedList
+Input: 
+Input String: M->i->k->e->NULL
+Output: e->k->i->M->NULL
+
+Input String: b->r->e->a->k->NULL
+Output: k->a->e->r->b->NULL
+
+
+//here is the class definition of SchNode
+public class SchNode {
+	public char ch; 
+	public SchNode nextNode; 
+	public SchNode(char ch){
+		this.ch = ch; 
+	}	
+}
+
+//Here is the Definition of SchNode for C Language
+struct SchNode {
+	char ch;
+	struct SchNode * nextNode;
+	};
+  
+  code:////////////////////////
+  
+  #include "common.h"
+#include "ExpCUtils.h"
+struct SchNode * func(struct SchNode * head){
+    struct SchNode *temp1=NULL,*temp2=head,*temp3,*head1;
+    while(temp2!=NULL)
+    {
+        temp3=temp2->nextNode;
+        temp2->nextNode=temp1;
+        temp1=temp2;
+        temp2=temp3;
+    }
+    temp2=head1;
+    return head1;
+}
