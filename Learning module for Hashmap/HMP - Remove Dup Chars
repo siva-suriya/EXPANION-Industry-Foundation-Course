@@ -1,0 +1,62 @@
+Given a LinkedList (where each node has a character) 
+remove duplicates characters and maintain the same order
+Please use hashmap to solve this problem. Do not delete items from hashmap
+
+Input: H->e->l->l->o->w->o->r->l->d->h->i->NULL 
+Output: H->e->l->o->w->r->d->h->i->NULL
+
+
+
+//here is the class definition of SchNode
+public class SchNode {
+	public char ch; 
+	public SchNode nextNode; 
+	public SchNode(char ch){
+		this.ch = ch; 
+	}	
+}
+
+//Here is the Definition of SchNode for C Language
+struct SchNode {
+	char ch;
+	struct SchNode * nextNode;
+	};
+
+
+//Here is the Definition of HashMapChInt for C Language
+struct HashMapChInt {
+	int arr[256];
+};
+
+//This function returns an int value mapped to the key c
+int HMChIntGet(struct HashMapChInt * map,char c);
+
+//This function is used to insert an int value into the map with a key c
+void HMChIntPut(struct HashMapChInt * map,char c,int val);
+
+
+
+code://////////////////////////////////////////////////////
+
+import java.util.*;
+import com.expanion.code.evalution.*;
+public class Answer implements QuestionInterface {
+@Override
+public SchNode func(SchNode str, Map<Character, Integer> map){
+if(str == null)
+return null;
+SchNode prev =str;
+map.put(str.ch,1);
+SchNode current =str.nextNode;
+while(current != null)
+{
+    if(map.containsKey(current.ch))
+    prev.nextNode=current.nextNode;
+    else{
+        map.put(current.ch,1);
+        prev = current;
+    }
+    current=current.nextNode;}
+return str;}
+}
+
