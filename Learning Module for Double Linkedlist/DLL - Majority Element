@@ -1,0 +1,54 @@
+Given a Doublelinkedlist, where each node has a character, 
+find the character which appeared the maximum time. 
+If you have multiple character as result, return the first character in that list.  
+
+Input: NULL<-h<=>e<=>l<=>l<=>o<=> <=>w<=>o<=>r<=>l<=>d->NULL
+Output : 'l'
+Input: NULL<-y<=>e<=>l<=>h<=>a<=>h<=>a->NULL
+Output: 'h'
+
+// here is the definition of DchNode
+public class DchNode {
+	public char ch; 
+	public DchNode nextNode; 
+	public DchNode prevNode; 
+	public DchNode(char ch){
+		this.ch = ch; 
+	}
+}
+
+//Here is the Definition of DchNode for C Language
+struct DchNode {
+	char ch;
+	struct DchNode * nextNode;
+	struct DchNode * prevNode;
+	};
+  
+  code:////////////////////
+  
+  #include "common.h"
+#include "ExpCUtils.h"
+char func(struct DchNode * head){
+ char ch = '\0';
+ struct DchNode *temp=head;
+ char a[256]={0};
+ int max=0;
+ while(temp!='\0')
+ {
+     a[temp->ch]++;
+     temp=temp->nextNode;
+ }
+ temp=head;
+ while(temp!='\0')
+ {
+     if(max==ch)
+     {
+         max=a[temp->ch];
+         ch=temp->ch;
+     }
+     temp=temp->nextNode;
+ }
+ return ch;
+}
+
+  
