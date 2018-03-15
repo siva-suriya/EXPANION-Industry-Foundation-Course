@@ -1,0 +1,59 @@
+Given a linkedlist, where each node has a character, 
+find the character which appeared the maximum time. 
+If you have multiple character as result, return the first character in that list.  
+
+Input: h->e->l->l->o-> ->w->o->r->l->d->NULL
+Output : 'l'
+Input: y->e->l->h->a->h->a->NULL
+Output: 'h'
+
+// here is the definition of SchNode
+public class SchNode {
+	public char ch; 
+	public SchNode nextNode; 
+	public SchNode(char ch){
+		this.ch = ch; 
+	}	
+}
+
+//Here is the Definition of SchNode for C Language
+struct SchNode {
+	char ch;
+	struct SchNode * nextNode;
+	};
+  
+  
+  
+  code:////////////////////////////////
+  import com.expanion.code.evalution.*;
+public class Answer implements QuestionInterface {
+ @Override
+ public char func(SchNode head)
+ {
+     char c='\0';
+     if(head==null)
+     return c;
+     SchNode tr=head;
+     SchNode trr=null;
+     char chh=0;
+     int i=0;
+     while(tr!=null)
+     {int min=0;
+         trr=tr;
+         while(trr!=null)
+         {
+             if(tr.ch==trr.ch)
+             {
+                 min++;
+             }
+             if(min>i){chh=tr.ch;
+             i=min;}
+         trr=trr.nextNode;
+             
+         }
+         tr=tr.nextNode;
+     }
+  // write your code here
+  return chh; 
+ }
+} 
