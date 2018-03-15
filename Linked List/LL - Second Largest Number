@@ -1,0 +1,49 @@
+Given an LinkedList (where each node has integer) find the second largest element 
+(where array has only distinct elements)
+
+Input: 2->10->11->20->-5->40->60->90->1->100->NULL
+Output: 90
+
+// here is the definition of SintNode
+public class SintNode {
+	public int num; 
+	public SintNode nextNode; 
+	public SintNode(int num){
+		this.num = num; 
+	}
+}
+
+//Here is the Definition of SintNode for C Language
+struct SintNode {
+	int num;
+	struct SintNode * nextNode;
+	};
+  
+  
+  code://////////////////////
+  
+  #include "common.h"
+#include "ExpCUtils.h"
+//#include<stdio.h> 
+
+int func(struct SintNode * input){
+struct SintNode *a=input;
+struct SintNode *a1=NULL;
+int temp=0;
+while(input!='\0')
+{
+    a1=input->nextNode;
+    while(a1!='\0')
+    {
+        if((input->num)<(a1->num))
+        {
+            temp=input->num;
+            input->num=a1->num;
+            a1->num=temp;
+        }
+        a1=a1->nextNode;
+    }
+    input=input->nextNode;
+}
+return a->nextNode->num;
+}
