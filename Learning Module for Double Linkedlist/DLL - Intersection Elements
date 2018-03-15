@@ -1,0 +1,97 @@
+Find the intersection of two given DoubleLinkedList (where each node has a character). 
+Return the DoubleLinkedList which has character which appears in both DoubleLinkedList (same sequence order as DoubleLinkedList1). 
+Input: DoubleLinkedList1: NULL<-H<=>e<=>l<=>l<=>o->NULL  
+LinkedList2: NULL<-w<=>o<=>r<=>l<=>d->NULL
+Output: NULL<-l<=>o->NULL
+
+Input: LinkedList1: NULL<-h<=>i->NULL 
+LinkedList2: NULL<-b<=>y<=>e->NULL
+Output: null
+
+
+// here is the definition of DchNode
+public class DchNode {
+	public char ch; 
+	public DchNode nextNode; 
+	public DchNode prevNode; 
+	public DchNode(char ch){
+		this.ch = ch; 
+	}
+}
+
+//Here is the Definition of DchNode for C Language
+struct DchNode {
+	char ch;
+	struct DchNode * nextNode;
+	struct DchNode * prevNode;
+	};
+  
+  
+  code:///////////////////////////////
+  
+  #include "common.h"
+
+struct DchNode * func(struct DchNode * head1, struct DchNode * head2){
+    
+    struct DchNode *cur,*newnode,*temp1,*temp2,*start;
+    temp1=head1;
+    temp2=head2;
+    start=NULL;
+    int a[256]={0};
+    if(temp1==temp2)
+    {
+        return temp1;
+    }
+    while(temp2!='\0')
+    {
+        a[temp2->ch]++;
+        temp2=temp2->nextNode;
+        
+    }
+    while(temp1!=NULL)
+    {
+        if(a[temp1->ch]==1)
+        {
+            a[temp1->ch]=0;
+            newnode=(struct DchNode*)malloc(sizeof(struct DchNode));
+            newnode->ch=temp1->ch;
+            newnode->prevNode='\0';
+            newnode->nextNode='\0';
+            if(start=='\0')
+            {
+                start=newnode;
+                cur=newnode;
+            }
+            else{
+                cur->nextNode=newnode;
+                newnode->prevNode=cur;
+                cur=newnode;
+                
+            }
+            
+    }
+    else if(a[temp1->ch]!=0)
+    {
+        newnode=(struct DchNode*)malloc(sizeof(struct DchNode));
+        newnode->ch=temp1->ch;
+        newnode->prevNode='\0';
+        newnode->nextNode='\0';
+        if(start=='\0')
+        {
+            start=newnode;
+            cur=newnode;
+        }
+        else
+        {
+            cur->nextNode=newnode;
+            newnode->prevNode=cur;
+            cur=newnode;
+        }
+    }
+    temp1=temp1->nextNode;
+    
+    }
+	// WRITE YOUR CODE HERE
+	return start;
+}
+
