@@ -1,0 +1,52 @@
+Number is given in a LinkedList (where each node has one digit), 
+find if it is jumper number, 
+where the absolute difference consecutive digits is 1
+
+Input: 2->3->4->5->4->3->4->3->2->1->NULL
+Output: true
+Input: 2->3->4->5->3->4->NULL
+Output: false
+
+// here is the definition of SintNode
+public class SintNode {
+	public int num; 
+	public SintNode nextNode; 
+	public SintNode(int num){
+		this.num = num; 
+	}
+}
+
+//Here is the Definition of SintNode for C Language
+struct SintNode {
+	int num;
+	struct SchNode * nextNode;
+	};
+  
+  
+  
+  
+  code://///////////////////////////
+  
+  import com.expanion.code.evalution.*;
+public class Answer implements QuestionInterface {
+ @Override
+ public boolean func(SintNode head)
+ {
+  if(head==null)
+  return false;
+  SintNode t=head;
+  int c=0,j=0;
+  while(t.nextNode!=null)
+  {
+      c++;
+      if(((t.num-t.nextNode.num)==1)||(t.num-t.nextNode.num)==-1)
+      j++;
+      t=t.nextNode;
+  }
+  if(j==c)
+  return true;
+  else
+  return false;
+  
+ }
+} 
