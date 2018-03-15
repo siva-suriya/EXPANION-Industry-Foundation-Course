@@ -1,0 +1,53 @@
+Given an DoubleLinkedList (where each node has integer) find the second largest element 
+(where array has only distinct elements)
+
+Input: NULL<-2<=>10<=>11<=>20<=>-5<=>40<=>60<=>90<=>1<=>100->NULL
+Output: 90
+
+// here is the definition of DintNode
+public class DintNode {
+	public int num; 
+	public DintNode nextNode; 
+	public DintNode prevNode; 
+	public DintNode(int num){
+		this.num = num; 
+	}
+}
+
+//Here is the Definition of DintNode for C Language
+struct DintNode {
+	int num;
+	struct DintNode * nextNode;
+	struct DintNode * prevNode;
+	};
+  
+  
+  
+  code:////////////////
+  
+  
+  #include "common.h"
+#include "ExpCUtils.h"
+//#include<stdio.h> 
+
+int func(struct DintNode * input){
+struct DintNode *a=input;
+struct DintNode *a1=NULL;
+int temp=0;
+while(input!='\0')
+{
+    a1=input->nextNode;
+    while(a1!='\0')
+    {
+        if((input->num)<(a1->num))
+        {
+            temp=input->num;
+            input->num=a1->num;
+            a1->num=temp;
+        }
+        a1=a1->nextNode;
+    }
+    input=input->nextNode;
+}
+return a->nextNode->num;
+}
