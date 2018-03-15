@@ -1,0 +1,61 @@
+In a given DoubleLinkedList (where each node has a character), 
+there is one character which appears twice. 
+Find a function to find the character and return it. 
+
+Input: NULL<-h<=>e<=>l<=>l<=>o->NULL
+Output : 'l'
+Input: NULL<-a<=>s<=>d<=>f<=>g<=>h<=>j<=>a->NULL
+Output: 'a'
+
+
+//here is the class definition of DchNode
+public class DchNode {
+	public char ch; 
+	public DchNode nextNode; 
+	public DchNode prevNode; 
+	public DchNode(char ch){
+		this.ch = ch; 
+	}
+}
+
+//Here is the Definition of DchNode for C Language
+struct DchNode {
+	char ch;
+	struct DchNode * nextNode;
+	struct DchNode * prevNode;
+	};
+
+
+code://////////////////
+
+
+#include "common.h"
+#include <string.h>
+char func(struct DchNode * head){
+	char ch  = '\0';
+	// WRITE YOUR CODE HERE
+	struct DchNode *temp,*temp1,*temp2;
+	temp=head;
+	while(temp!='\0')
+	{
+	    temp1=temp;
+	    //while(temp1='\0')
+	    //{
+	      //  temp1=temp;
+	        while(temp1->nextNode!='\0')
+	        {
+	            if(temp->ch==temp1->nextNode->ch)
+	            {
+	              //  if(temp->ch==temp->ch)
+	                //{
+	                    temp2->ch=temp->ch;
+	                    
+	                }
+	                temp1=temp1->nextNode;
+	            }
+	            temp=temp->nextNode;
+	       // }
+	    //}
+	}
+	return temp2->ch;
+}
