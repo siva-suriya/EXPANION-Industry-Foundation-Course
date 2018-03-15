@@ -1,0 +1,67 @@
+You need to implement push, pop, enqueue, dequeue function. 
+When getHeadOfLinkedList is called, return the head of the linked list. 
+When push, enqueue is called, insert the items in list at the head. 
+When the stack is empty and pop, dequeue is called return 0
+Dequeue should remove the element from the tail
+
+Input: 
+PUSH 4 ENQUEUE 6 PUSH 8 POP
+getHeadOfLinkedList should return:6->4->NULL 
+
+Input: PUSH 3 DEQUEUE POP POP PUSH 5
+getHeadOfLinkedList should return:5->NULL 
+
+// here is the definition 
+public class SintNode {
+	public int num; 
+	public SintNode nextNode; 
+	public SintNode(int num){
+		this.num = num; 
+	}
+}
+//Here is the Definition of SintNode for C Language
+struct SintNode {
+	int num;
+	struct SintNode * nextNode;
+	};
+
+
+code:///////////////////////
+
+#include "common.h"
+#include "answer.h"
+#include <string.h>
+
+struct SintNode * head = NULL;
+
+struct SintNode * getHeadOfLinkedList() {
+	return head;
+}
+
+int getMax(){
+	// YOU CAN IGNORE THIS FUNCTION FOR THIS PROBLEM
+	return 0;
+}
+
+void enQueue(int num) {
+	// WRITE YOUR CODE HERE
+}
+
+int deQueue() {
+	// WRITE YOUR CODE HERE
+	return 0;
+}
+
+void push(int num) {
+	// WRITE CODE HERE
+}
+
+int pop() {
+	// WRITE CODE HERE
+	return 0;
+}
+
+int getMin(){
+	// YOU CAN IGNORE THIS FUNCTION FOR THIS PROBLEM
+	return 0;
+}
