@@ -1,0 +1,64 @@
+Given a DoubleLinkedList (where each node has a character) remove the given character 
+Input: 
+Input String: NULL<-H<=>e<=>l<=>l<=>o->NULL
+CharacterToRemove: 'l'
+Output: NULL<-H<=>e<=>o->NULL
+
+
+//here is the class definition of DchNode
+public class DchNode {
+	public char ch; 
+	public DchNode nextNode; 
+	public DchNode prevNode; 
+	public DchNode(char ch){
+		this.ch = ch; 
+	}
+}
+
+//Here is the Definition of DchNode for C Language
+struct DchNode {
+	char ch;
+	struct DchNode * nextNode;
+	struct DchNode * prevNode;
+	};
+
+
+code://////////////////
+
+#include "common.h"
+#include "ExpCUtils.h"
+
+struct DchNode * func(struct DchNode * head, char ch){
+ struct DchNode *temp,*newnode,*cur,*start;
+ char c='\0';
+ temp=head;
+ cur=NULL;
+ while(temp!='\0')
+ {
+     if(temp->ch!=ch)
+     {
+    newnode=(struct DchNode *)malloc(sizeof(struct DchNode));
+      newnode->ch=temp->ch;
+      newnode->prevNode='\0';
+      newnode->nextNode=cur;
+      cur=newnode;
+     if(cur->nextNode!='\0')
+         {
+         cur->nextNode->prevNode=cur;
+         }
+     }
+     temp=temp->nextNode;
+}
+    struct DchNode *t = NULL;  
+     struct DchNode *current = cur;
+     while (current !=  NULL)
+     {
+       t = current->prevNode;
+       current->prevNode = current->nextNode;
+       current->nextNode = t;              
+       current = current->prevNode;
+     }      
+     if(t!= NULL )
+        cur = t->prevNode;
+return cur;
+}
