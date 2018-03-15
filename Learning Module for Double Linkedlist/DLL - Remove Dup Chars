@@ -1,0 +1,60 @@
+Given a DoubleLinkedList (where each node has a character) 
+remove duplicates characters and maintain the same order
+
+Input: NULL<-H<=>e<=>l<=>l<=>o<=>w<=>o<=>r<=>l<=>d<=>h<=>i->NULL 
+Output: NULL<-H<=>e<=>l<=>o<=>w<=>r<=>d<=>h<=>i->NULL
+
+
+
+//here is the class definition of DchNode
+public class DchNode {
+	public char ch; 
+	public DchNode nextNode; 
+	public DchNode prevNode; 
+	public DchNode(char ch){
+		this.ch = ch; 
+	}
+}
+
+//Here is the Definition of DchNode for C Language
+struct DchNode {
+	char ch;
+	struct DchNode * nextNode;
+	struct DchNode * prevNode;
+	};
+  
+  code:////////////////////////
+  #include "common.h"
+#include "ExpCUtils.h"
+
+struct DchNode * func(struct DchNode * head) {
+ struct DchNode *temp,*temp1,*t;
+      temp=head;
+      while(temp!='\0')
+      {
+          temp1=temp->nextNode;
+          while(temp1!='\0')
+          {
+           
+              if(temp->ch==temp1->ch)
+               {
+                   
+                   t=temp1->prevNode;
+                  t->nextNode=temp1->nextNode;
+                 temp1=temp1->nextNode;
+                 if(temp1!=NULL)
+                 temp1->prevNode=t;
+                 
+               }
+               else
+               {
+              temp1=temp1->nextNode;
+               }
+          }
+          temp=temp->nextNode;
+      }
+
+return head;
+}
+
+  
