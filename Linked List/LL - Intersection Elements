@@ -1,0 +1,86 @@
+problem:////////////////////////////////////////
+
+
+Find the intersection of two given LinkedList (where each node has a character). 
+Return the LinkedList which has character which appears in both LinkedList (same sequence order as LinkedList1). 
+Input: LinkedList1: H->e->l->l->o->NULL  
+LinkedList2: w->o->r->l->d->NULL
+Output: l->o->NULL
+
+Input: LinkedList1: h->i->NULL 
+LinkedList2: b->y->e->NULL
+Output: null
+
+
+// here is the definition of SchNode
+public class SchNode {
+	public char ch; 
+	public SchNode nextNode; 
+	public SchNode(char ch){
+		this.ch = ch; 
+	}	
+}
+
+//Here is the Definition of SchNode for C Language
+struct SchNode {
+	char ch;
+	struct SchNode * nextNode;
+	};
+  
+  code:////////////////////////////////////////////////////
+  
+  import com.expanion.code.evalution.*;
+public class Answer implements QuestionInterface {
+ @Override
+ public SchNode func(SchNode head1, SchNode head2)
+ {
+  // write your code here
+  if(head1==null&&head2==null)
+  return null;
+  if(head1==null)
+  return null;
+  if(head2==null)
+  return null;
+  SchNode t=null;
+  SchNode r=null;int i=0,j=0;
+  SchNode temp1=head1;
+  SchNode temp2=head2;
+  while(temp1!=null)
+  {
+      j=0;
+      temp2=head2;
+      while(temp2!=null)
+      {
+          if(i==0&&temp1.ch==temp2.ch)
+          {  char c=temp1.ch;
+              t=new SchNode(c);
+              //t.ch=temp1.ch;
+              t.nextNode=null;
+              temp2.ch='@';
+              i=1;
+              r=t;
+              break;
+          }
+          else if(temp1.ch==temp2.ch)
+          {  
+              j=1;
+              temp2.ch='@';
+              break;
+             
+          }
+          temp2=temp2.nextNode;
+      }
+          if(i==1&&j==1)
+          {
+              char c=temp1.ch;
+              SchNode y=new SchNode(c);
+              y.nextNode=null;
+              t.nextNode=y;
+              t=y;
+          }
+          
+      temp1=temp1.nextNode;
+  }
+  return r; 
+ }
+}
