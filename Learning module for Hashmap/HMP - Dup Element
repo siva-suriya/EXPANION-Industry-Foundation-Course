@@ -1,0 +1,63 @@
+In a given LinkedList (where each node has a character), 
+there is one character which appears twice. 
+Find a function to find the character and return it. 
+Please use the hashmap passed to this function to solve this problem 
+If there are no such character return '0' (zero)
+
+Input: h->e->l->l->o->NULL
+Output : 'l'
+Input: a->s->d->f->g->h->j->a->NULL
+Output: 'a'
+
+
+//here is the class definition of SchNode
+public class SchNode {
+	public char ch; 
+	public SchNode nextNode; 
+	public SchNode(char ch){
+		this.ch = ch; 
+	}	
+}
+
+//Here is the Definition of SchNode for C Language
+struct SchNode {
+	char ch;
+	struct SchNode * nextNode;
+	};
+
+//Here is the Definition of HashMapChInt for C Language
+struct HashMapChInt {
+	int arr[256];
+};
+
+//This function returns an int value mapped to the key c
+int HMChIntGet(struct HashMapChInt * map,char c);
+
+//This function is used to insert an int value into the map with a key c
+void HMChIntPut(struct HashMapChInt * map,char c,int val);
+
+
+
+code://////////////////////////////////////////
+
+
+import java.util.*;
+import com.expanion.code.evalution.*;
+public class Answer implements QuestionInterface {
+@Override
+public char func(SchNode head, Map<Character, Integer> hashMap){
+// write your code here
+char temp='a';
+hashMap.put(head.ch,1);
+SchNode current=head.nextNode;
+while(current!=null)
+{
+    if(hashMap.containsKey(current.ch))
+    temp=current.ch;
+    else
+    hashMap.put(current.ch,1);
+    current=current.nextNode;
+}
+return temp;
+	}
+}
