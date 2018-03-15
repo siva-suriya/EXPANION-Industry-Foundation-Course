@@ -1,0 +1,82 @@
+Find the intersection of two given LinkedList (where each node has a character). 
+Return the LinkedList which has character which appears in both LinkedList (same sequence order as LinkedList1).
+Please use hashmap to solve this problem.  
+Input: LinkedList1: H->e->l->l->o->NULL  
+LinkedList2: w->o->r->l->d->NULL
+Output: l->o->NULL
+
+Input: LinkedList1: h->i->NULL 
+LinkedList2: b->y->e->NULL
+Output: null
+
+
+// here is the definition of SchNode
+public class SchNode {
+	public char ch; 
+	public SchNode nextNode; 
+	public SchNode(char ch){
+		this.ch = ch; 
+	}	
+}
+
+//Here is the Definition of SchNode for C Language
+struct SchNode {
+	char ch;
+	struct SchNode * nextNode;
+	};
+//Here is the Definition of HashMapChInt for C Language
+struct HashMapChInt {
+	int arr[256];
+};
+
+//This function returns an int value mapped to the key c
+int HMChIntGet(struct HashMapChInt * map,char c);
+
+//This function is used to insert an int value into the map with a key c
+void HMChIntPut(struct HashMapChInt * map,char c,int val);
+
+
+code:////////////////////////////////////////////
+
+
+
+	@Override
+	public SchNode func(SchNode head1, SchNode head2,
+			Map <Character, Integer> map)
+	{ 
+	    SchNode n1=head1;
+	    SchNode n2=head2;
+	    ArrayList<Character> a=new ArrayList<Character>();
+	    ArrayList<Character> b=new ArrayList<Character>();
+	    while(n1!=null){
+	        a.add(n1.ch);
+	        n1=n1.nextNode;
+	    }
+	    while(n2!=null){
+	        b.add(n2.ch);
+	        n2=n2.nextNode;
+	      }
+	      String hj="";
+	      for(int i=0;i<a.size();i++){
+	          if(b.contains(a.get(i))){
+	       map.put(a.get(i),i);
+	       hj=hj+a.get(i);
+	          b.remove(a.get(i));
+	              }
+	      }
+	      
+	      SchNode an=new SchNode('a');
+	      SchNode ex=an;
+	         for(int h=0;h<hj.length();h++){
+	          while(ex.nextNode!=null){
+	              ex=ex.nextNode;
+	          }
+	          SchNode node=new SchNode(hj.charAt(h));
+	          ex.nextNode=node;
+	          
+	      }
+	return an.nextNode;
+	    
+	}
+	
+
