@@ -1,0 +1,49 @@
+Number is given in a DoubleLinkedList (where each node has one digit), 
+find if it is jumper number, 
+where the absolute difference consecutive digits is 1
+
+Input: NULL<-2<=>3<=>4<=>5<=>4<=>3<=>4<=>3<=>2<=>1->NULL
+Output: true
+Input: NULL<-2<=>3<=>4<=>5<=>3<=>4->NULL
+Output: false
+
+// here is the definition of DintNode
+public class DintNode {
+	public int num; 
+	public DintNode nextNode; 
+	public DintNode prevNode; 
+	public DintNode(int num){
+		this.num = num; 
+	}
+}
+
+//Here is the Definition of DintNode for C Language
+struct DintNode {
+	int num;
+	struct DintNode * nextNode;
+	struct DintNode * prevNode;
+	};
+
+
+code://////////////////////
+
+#include "common.h"
+#include <string.h>
+#include "ExpCUtils.h"
+BOOL func(struct DintNode * head){
+	// WRITE YOUR CODE HERE; return true or false
+	struct DintNode *temp,*t=NULL;
+	temp=head;
+	int l=0,c=0;
+	while(temp!='\0')
+	{
+	    t=temp->nextNode;
+	    if(t!=NULL)
+	    if(abs((temp->num)-(t->num))!=1)
+	    {
+	        return false;
+	    }
+	    temp=temp->nextNode;
+	}
+	return true;
+}
