@@ -1,0 +1,71 @@
+Inorder traversal is a depth first traversal technique where the nodes are visited in the following order: (Left, Root, Right)
+
+For example:
+
+             1
+          /      \
+        /         \
+      2           3
+     /   \         /  \
+   4    5      6   7
+
+Inorder traversal output: 4 2 5 1 6 3 7
+
+Given a binary tree with positive integer values, find the inorder traversal of the tree and print them all by negating every alternate number
+
+Expected output:  4 -2 5 -1 6 -3 7
+
+The structure of Node is
+struct Node {
+	int nodeValue;
+	struct Node * lChild;
+	struct Node * rChild;
+};
+JAVA
+public class Node {
+	public int nodeValue;
+	public Node lChild;
+	public Node rChild;
+}
+
+
+code://///////////////////////////
+
+import com.expanion.code.evalution.Node;
+import java.util.*;
+public class Answer implements QuestionInterface {
+	// @Override
+	public static ArrayList<Integer> a = new ArrayList();
+	public int[] func(Node root)
+	{   
+	    a.clear();
+	    inorder(root);
+	    if(showArray().length > 0)
+            return showArray();
+        else {
+            return null;
+        }
+	}
+	
+	public int[] showArray() {
+	    int n = a.size();
+	    int i, arr[] = new int[n];
+	    for(i = 0; i < n; i++) {
+	        
+	        arr[i] = a.get(i);
+	        if(i % 2 == 1) arr[i] = -arr[i];
+	    }
+	    return arr;
+	}
+	
+	public void inorder(Node node) {
+	    
+	    if(node == null) return;
+	    
+	    inorder(node.lChild);
+	    
+	    a.add(node.nodeValue);
+	    
+	    inorder(node.rChild);
+	}
+}
