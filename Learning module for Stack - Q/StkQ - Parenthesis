@@ -1,0 +1,19 @@
+String has set of parenthesis. Return true if the parenthesis are properly
+ordered and closed. For every open bracket, 
+there should be close bracket in the right sequence. 
+Brackets will be of type (, {, [, ], }, )
+Input: ({{[][]}})
+Output: true
+Input: {[}]
+Output: false // they are not closed in the right sequence
+
+
+code:///////////////////
+
+#include "common.h"
+#include <string.h>
+
+BOOL func(char * str){
+        //WRITE CODE HERE;return true or false
+        return false;
+}
